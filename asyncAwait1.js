@@ -104,19 +104,19 @@ async function allData() {
 First, fetch user details from https://jsonplaceholder.typicode.com/users/1. Then, using the id from the user data, 
 fetch the first post of that user from https://jsonplaceholder.typicode.com/posts?userId=1.
 */
-
-async function userDataFetch() {
+async function  fetchUserData() {
     try {
-        let userRes = await fetch("https://jsonplaceholder.typicode.com/users/1");
-        let user = await userRes.json();
-        
-        let postRes = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`);
-        let post = await postRes.json();
+    let user = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    let userRes = await user.json();
 
-        console.log("User : ",user)
-        console.log("User first post : ",post[0])
+    let post = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
+    let postRes = await post.json();
+
+    console.log("User : ",userRes)
+    console.log("User first post: ",postRes[0])
     } catch (error) {
         console.log(error)
     }
 }
-userDataFetch()
+
+fetchUserData();
