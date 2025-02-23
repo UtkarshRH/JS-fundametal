@@ -33,7 +33,22 @@ console.log(obj2)
 // 2) Rest Operator ( ... ) : Pack value into an array Used to collect remaining arguments
 // 1)Example of array
 
-function sum(...numbers){
-    return numbers.reduce((accu,num)=> accu + num, 0)
+function sum(...number){
+    return number.reduce((accu, num)=> accu + num,0);
 }
-console.log(sum(1,2,3,4,5)) // 15
+
+console.log("Value is Rest : ",sum(1,2,3,4,5,6,7));
+
+// Example of object 
+
+const personObj = {
+    name : 'Utkarsh',
+    age : 23,
+    city : 'Sakoli',
+    skill : 'Software Development'
+}
+
+const {name,age,...rest} = personObj;
+console.log("Person Obj Example : ",personObj);
+console.log('Example of Rest',personObj);
+

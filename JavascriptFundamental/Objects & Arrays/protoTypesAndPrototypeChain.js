@@ -19,15 +19,17 @@ console.log(person.toString());
 
 // Prototype chain in Action : 
 
-const Animal = {
+const animal = {
     eat : true
-};
+}
 
-const dog = Object.create(Animal);
+const dog = Object.create(animal);
+
 dog.bark = true;
 
-console.log(dog.eat);
-console.log(dog.bark);
+console.log(animal.eat);
+console.log(dog.eat)
+
 
 /*
     In above example, dog is inheriting eat property from Animal prototype
