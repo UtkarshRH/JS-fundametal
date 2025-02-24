@@ -20,12 +20,61 @@ function after2Sec(){
             if(success){
                 resolve("Promise resolve")
             }else{
-                reject("Promise reject : Something went wrong")
+                reject("Promise reject Something went wrong!")
             }
         },2000)
     })
 }
 
-after2Sec()
-.then((res)=>console.log(res))
-.catch((error)=> console.log(error))
+// after2Sec()
+// .then((resolve)=> console.log(resolve))
+// .catch((reject)=> console.log(reject));
+
+
+/*
+    Que : Chain multiple Promises together (e.g., fetching user data, then fetching posts).
+*/ 
+
+function fetchUser(){
+    return fetch("https://jsonplaceholder.typicode.com/users/1")
+    .then((res)=> res.json());
+}
+
+function fetchUserPost(userId){
+    return fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
+    .then((res)=>res.json());
+}
+
+// fetchUser()
+// .then((user)=>{
+//     console.log("User Data",user)
+//     return fetchUserPost(user.id);
+// })
+// .then((post)=>{
+//     console.log("User Post",post)
+// })
+// .catch((error)=>{
+//     console.log(error)
+// })
+
+
+/*
+    Que: Use Promise.all() to execute multiple Promises in parallel.
+*/ 
+
+const myPromise1 =  new Promise((resolve,reject)=>{
+    setTimeout(resolve,200,"Promise 1 resolve")
+})
+
+const myPromise2 =  new Promise((resolve,reject)=>{
+    setTimeout(resolve,100,"Promise 2 resolve")
+})
+
+// Promise.all([myPromise1,myPromise2]).then((res)=>{console.log(res)})
+
+/*
+    Que: Use Promise.race() to return the first resolved/rejected Promise.
+*/ 
+
+Promise.race([myPromise1,myPromise2]).then((data)=>console.log(data));
+
