@@ -86,4 +86,17 @@ function errorHandler(error,result){
 getData(errorHandler)
 
 
+/*Create the callbak funtion */ 
+
+function greet(name ,cb){
+    console.log(`Js : Hello ${name}`);
+    cb();
+}
+
+function sayHii(){
+    console.log("Utkarsh : Hii Js");
+}
+
+greet("Utkarsh",sayHii);
+
 
